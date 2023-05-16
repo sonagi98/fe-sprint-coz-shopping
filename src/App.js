@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
       <div className="App">
         <Header/>
+        <Footer/>
     </div>
     </BrowserRouter>
     </div>
