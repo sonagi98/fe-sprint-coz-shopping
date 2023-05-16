@@ -21,12 +21,12 @@ const MainContainer = styled.div`
 
 `
 
-export default function BookmarkPage() {
+export default function MainPage() {
 
     return (
         <ScreenContainer>
             <MainContainer>
-                <div> Bookmark page </div>
+                <div> hello </div>
             </MainContainer>
         </ScreenContainer>
     )
