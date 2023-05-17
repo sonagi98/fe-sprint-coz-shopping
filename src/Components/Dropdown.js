@@ -31,7 +31,7 @@ const MenuItem = styled.div`
 
    background-color:#FFFFFF;
 
-   &.userinfo {
+   &.user-info {
     margin-top: 10px;
    }
 `
