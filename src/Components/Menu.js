@@ -22,13 +22,10 @@ export default function Menu() {
     const handleMenuOpen = () => {
         setMenuOpen(!isOpen)
     }
-    const handleMenuClick = (url) => {
-        redirect(url);
-    }
 
     return (
         <Icon onClick={handleMenuOpen}>
-            {isOpen? <Dropdown handleMenuClick={handleMenuClick}/> : null}
+            {isOpen? <Dropdown/> : null}
         </Icon>
     )
 }

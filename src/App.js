@@ -13,6 +13,7 @@ import Bookmark from './Pages/Bookmark';
 
 function App() {
   const [allItems, setItemList] = useState([]);
+  const [bookmarkItmes, setBookmarkList] = useState([]);
 
   useEffect(() => {
     axios.get('http://cozshopping.codestates-seb.link/api/v1/products')
@@ -28,9 +29,9 @@ function App() {
         <Header/>
 
         <Routes>
-          <Route path='/' element={<Main items={allItems}/>}/>
-          <Route path='/products/list' element={<ProductList/>}/>
-          <Route path='/bookmark' element={<Bookmark/>}/>
+          <Route path='/' element={<Main items={allItems} bookmarks={bookmarkItmes}/>}/>
+          <Route path='/products/list' element={<ProductList items={allItems} setBookmarkList={setBookmarkList}/>}/>
+          <Route path='/bookmark' element={<Bookmark bookmarks={bookmarkItmes} setBookmarkList={setBookmarkList}/>}/>
         </Routes>
 
         <Footer/>
