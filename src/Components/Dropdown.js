@@ -1,4 +1,5 @@
 import styled from'styled-components';
+import { Link } from 'react-router-dom';
 import productIcon from './common/product_line.png';
 import bookmarkIcon from './common/bookmark_line.png';
 
@@ -44,12 +45,17 @@ export default function Dropdown({handleMenuClick}) {
     return(
         <DropdownMenu>
             <MenuItem className='userinfo'> OOO님, 안녕하세요! </MenuItem>
-            <MenuItem onClick={() => handleMenuClick('/products/list')}>
+            <Link to='/products/list'>
+                <MenuItem>
                 <Icon src={productIcon}/> 상품리스트 페이지
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuClick('/bookmark')}>
+                </MenuItem>
+            </Link>
+            <Link to='/bookmark'>
+                <MenuItem>
                 <Icon src={bookmarkIcon}/> 북마크 페이지
-            </MenuItem>
+                </MenuItem>
+            </Link>
+            
         </DropdownMenu>
     )
 }
