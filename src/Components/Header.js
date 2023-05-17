@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import { redirect } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import Menu from "./Menu";
 import logo from './common/logo.png'
@@ -24,6 +23,7 @@ const Logo = styled.div`
    background-image: url(${logo});
    width: 55px;
    height: 30px;
+   cursor: pointer;
 `
 
 const Title = styled.div`
@@ -40,11 +40,21 @@ const Title = styled.div`
    margin: 0 12px;
 `
 
+const LogoWrapper = styled.div`
+   display:flex;
+   flex-direction:row;
+   justify-content:center;
+`
+
 export default function Header() {
     return (
         <HeaderBar>
-            <Logo/>
-            <Title>COZ Shopping</Title>
+            <Link to = '/'>
+                <LogoWrapper>
+                <Logo/>
+                <Title>COZ Shopping</Title>
+                </LogoWrapper>
+                </Link>
             <Menu/>
         </HeaderBar>
     )
