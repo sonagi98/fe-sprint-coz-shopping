@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+
+import Modal from './Modal';
 
 const ItemContainer = styled.div`
    width: 264px;
@@ -55,12 +58,17 @@ const Additional = styled.div`
 `
 
 
+
 export default function ItemComponent({item}) {
+    const [isOpen, setIsOpen] = useState(false);
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    }
 
     return (
         <ItemContainer>
             <ImgWrapper>
-                <Image src={item.image_url}/>
+                <Image src={item.image_url} onClick={handleClick}/>
                 {/* 북마크 추가 */}
             </ImgWrapper>
             <TextWrapper>
@@ -71,6 +79,8 @@ export default function ItemComponent({item}) {
             {item.type === 'Product' ? <Additional className='align-right'>{item.price}원</Additional> : null}
             {item.type === 'Exhibition' ? <Additional>{item.sub_title}</Additional> : null}
             {item.type === 'Brand' ? <Additional className='align-right'>{item.follower}</Additional> : null}
+
+            {isOpen ? <Modal image={item.image_url} title={item.title} handleClick={handleClick}/> : null}
         </ItemContainer>
     )
 }
