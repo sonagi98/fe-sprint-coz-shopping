@@ -63,7 +63,6 @@ export default function ItemComponent({item}) {
                 <Image src={item.image_url}/>
                 {/* 북마크 추가 */}
             </ImgWrapper>
-            {/* 조건부 렌더링 분기 만들어야 함. 우선 product 기준으로 작성함 */}
             <TextWrapper>
                 <Title>{item.title}</Title>
                 {item.type  === 'Product' ? <Title className='discount'>{item.discountPercentage}%</Title> : null}
