@@ -15,6 +15,19 @@ function App() {
   const [allItems, setItemList] = useState([]);
   const [bookmarkItmes, setBookmarkList] = useState([]);
 
+  const bookmarkHandler = (id) => {
+    let target = bookmarkItmes.map((el) => el.id === id);
+    if (target) {
+      let index = bookmarkItmes.indexOf(target);
+      let temp = [...bookmarkItmes];
+      temp.splice(index, 1);
+      setBookmarkList(temp);
+    } else {
+      let newItem = allItems.map((el) => el.id === id);
+      setBookmarkList([...bookmarkItmes, newItem]);
+    }
+  }
+
   useEffect(() => {
     axios.get('http://cozshopping.codestates-seb.link/api/v1/products')
     .then(res => {
@@ -29,9 +42,9 @@ function App() {
         <Header/>
 
         <Routes>
-          <Route path='/' element={<Main items={allItems} bookmarks={bookmarkItmes}/>}/>
-          <Route path='/products/list' element={<ProductList items={allItems} setBookmarkList={setBookmarkList}/>}/>
-          <Route path='/bookmark' element={<Bookmark bookmarks={bookmarkItmes} setBookmarkList={setBookmarkList}/>}/>
+          <Route path='/' element={<Main items={allItems} bookmarks={bookmarkItmes} bookmarkHandler={bookmarkHandler}/>}/>
+          <Route path='/products/list' element={<ProductList items={allItems} bookmarkHandler={bookmarkHandler}/>}/>
+          <Route path='/bookmark' element={<Bookmark bookmarks={bookmarkItmes} bookmarkHandler={bookmarkHandler}/>}/>
         </Routes>
 
         <Footer/>

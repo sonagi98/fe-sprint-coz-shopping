@@ -42,10 +42,13 @@ const SectionTitle = styled.div`
 const ItemList = styled.div`
    display: flex;
    flex-direction: row;
+   align-items:center;
+   justify-content:center;
 `
 
-export default function MainPage({items}) {
+export default function MainPage({items, bookmarks, bookmarkHandler}) {
     const mainList = items.splice(0,4);
+    const mainBookmarkList = bookmarks.splice(0,4);
 
     return (
         <ScreenContainer>
@@ -54,7 +57,7 @@ export default function MainPage({items}) {
                     <SectionTitle> 상품 리스트 </SectionTitle>
                     <ItemList>
                         {mainList.map((el) => {
-                            return <Item key={el.id} item={el}/>
+                            return <Item key={el.id} item={el} bookmarkHandler={bookmarkHandler}/>
                         })}
                     </ItemList>
                 </SectionWrapper>
@@ -62,9 +65,12 @@ export default function MainPage({items}) {
                 <SectionWrapper>
                     <SectionTitle> 북마크 리스트 </SectionTitle>
                     <ItemList>
-                        {mainList.map((el) => {
-                            return <Item key={el.id} item={el}/>
-                        })}
+                        {mainBookmarkList.length === 0 ? 
+                            <div> 표시할 항목이 없습니다. </div> : 
+                            mainBookmarkList.map((el) => {
+                                return <Item key={el.id} item={el} bookmarkHandler={bookmarkHandler}/>
+                            })}
+                        
                     </ItemList>
                 </SectionWrapper>
             </MainContainer>

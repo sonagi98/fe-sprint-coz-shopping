@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import closeIcon from './common/ic_round-close.png';
+import BookmarkIcon from './bookmark/Star';
 
 const ModalBackground = styled.div`
    width: 100vw;
@@ -26,11 +27,13 @@ const ModalContainer = styled.div`
    background-color: #d9d9d9;
 
    position: relative;
+   z-index: 2;
 `
 
 const ModalImg = styled.img`
    width:100%;
    height:100%;
+   object-fit: cover;
 `
 const ModalCloseBtn = styled.img`
    width: 24px;
@@ -56,22 +59,23 @@ const ModalTitle = styled.div`
 
 const ModalInfoWrapper = styled.div`
    position: absolute;
-   bottom: 12px;
+   left: 24px;
+   bottom: 24px;
 
    display: flex;
    flex-direction: row;
    align-items: center;
 `
-// 모달 그라데이션 추가할 것
+// css - TODO: 모달 그라데이션 추가할 것
 
-export default function Modal({image, brandImg, title, brandName, handleClick}) {
+export default function Modal({image, brandImg, title, brandName, handleClick, bookmarkHandler}) {
     return (
         <ModalBackground onClick={handleClick}>
-            <ModalContainer>
+            <ModalContainer onClick={(e) => {e.stopPropagation()}}>
                 <ModalImg src={image ? image : brandImg}/>
                 <ModalCloseBtn src={closeIcon} onClick={handleClick}/>
                 <ModalInfoWrapper>
-                    {/* 북마크 아이콘 들어갈 자리 */}
+                    <BookmarkIcon bookmark={false} bookmarkHandler={bookmarkHandler}/>
                     <ModalTitle>{title ? title : brandName}</ModalTitle>
                 </ModalInfoWrapper>
             </ModalContainer>

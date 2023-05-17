@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import BookmarkIcon from '../Components/bookmark/Star';
 import Modal from './Modal';
 
 const ItemContainer = styled.div`
@@ -20,6 +21,7 @@ const ImgWrapper = styled.div`
 const Image = styled.img`
    width:100%;
    height:100%;
+   object-fit: cover;
 `
 
 const TextWrapper = styled.div`
@@ -64,7 +66,7 @@ const Additional = styled.div`
 `
 
 
-export default function ItemComponent({item}) {
+export default function ItemComponent({item, bookmarkHandler}) {
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
         setIsOpen(!isOpen);
@@ -76,12 +78,12 @@ export default function ItemComponent({item}) {
             <ItemContainer>
                 <ImgWrapper>
                     <Image src={item.image_url} onClick={handleClick}/>
-                    {/* 북마크 추가 */}
+                    <BookmarkIcon bookmarkHandler={bookmarkHandler}/>
                 </ImgWrapper>
                 <TextWrapper>
                     <Title>#{item.title}</Title>
                 </TextWrapper>
-                {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick}/> : null}
+                {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick} bookmarkHandler={bookmarkHandler}/> : null}
             </ItemContainer>
             )
         case 'Brand' :
@@ -96,7 +98,7 @@ export default function ItemComponent({item}) {
                         <Title className='brand-sub'>관심고객수</Title>
                     </TextWrapper>
                     <Additional className='align-right'>{item.follower}</Additional>
-                    {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick}/> : null}
+                    {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick} bookmarkHandler={bookmarkHandler}/> : null}
             </ItemContainer>
             )
             case 'Exhibition' :
@@ -110,7 +112,7 @@ export default function ItemComponent({item}) {
                             <Title>{item.title}</Title>
                         </TextWrapper>
                         <Additional>{item.sub_title}</Additional>
-                        {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick}/> : null}
+                        {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick} bookmarkHandler={bookmarkHandler}/> : null}
                 </ItemContainer>
                 )
                 case 'Product' :
@@ -125,7 +127,7 @@ export default function ItemComponent({item}) {
                                 <Title className='discount'>{item.discountPercentage}%</Title>
                             </TextWrapper>
                             <Additional className='align-right'>{item.price}원</Additional>
-                            {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick}/> : null}
+                            {isOpen ? <Modal image={item.image_url} brandImg = {item.brand_image_url} title={item.title} brandName={item.brand_name} handleClick={handleClick} bookmarkHandler={bookmarkHandler}/> : null}
                     </ItemContainer>
                     )
                 default:
