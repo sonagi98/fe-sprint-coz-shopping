@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import closeIcon from './common/ic_round-close.png';
+
 const ModalBackground = styled.div`
    width: 100vw;
    height: 100vh;
@@ -22,16 +24,22 @@ const ModalContainer = styled.div`
    border-radius: 12px;
    border: 1px solid rgba(0, 0, 0, 0.1);
    background-color: #d9d9d9;
+
+   position: relative;
 `
 
 const ModalImg = styled.img`
    width:100%;
    height:100%;
 `
-const ModalCloseBtn = styled.div`
+const ModalCloseBtn = styled.img`
    width: 24px;
    height: 24px;
-   text-align:center;
+
+   position: absolute;
+   top: 12px;
+   right: 12px;
+   z-index: 100;
 `
 const ModalTitle = styled.div`
    font-size: 24px;
@@ -48,7 +56,7 @@ const ModalTitle = styled.div`
 
 const ModalInfoWrapper = styled.div`
    position: absolute;
-   bottom: 5%;
+   bottom: 12px;
 
    display: flex;
    flex-direction: row;
@@ -56,15 +64,15 @@ const ModalInfoWrapper = styled.div`
 `
 // 모달 그라데이션 추가할 것
 
-export default function Modal({image, title, handleClick}) {
+export default function Modal({image, brandImg, title, brandName, handleClick}) {
     return (
         <ModalBackground onClick={handleClick}>
             <ModalContainer>
-                <ModalImg src={image}/>
-                <ModalCloseBtn onClick={handleClick}/>
+                <ModalImg src={image ? image : brandImg}/>
+                <ModalCloseBtn src={closeIcon} onClick={handleClick}/>
                 <ModalInfoWrapper>
                     {/* 북마크 아이콘 들어갈 자리 */}
-                    <ModalTitle>{title}</ModalTitle>
+                    <ModalTitle>{title ? title : brandName}</ModalTitle>
                 </ModalInfoWrapper>
             </ModalContainer>
         </ModalBackground>

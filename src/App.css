@@ -1,6 +1,11 @@
+a {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
   box-sizing: border-box;
+  font-family: 'Inter';
 }
 
 .App-logo {
