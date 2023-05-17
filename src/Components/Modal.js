@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import closeIcon from './common/ic_round-close.png';
+
 const ModalBackground = styled.div`
    width: 100vw;
    height: 100vh;
@@ -28,10 +30,9 @@ const ModalImg = styled.img`
    width:100%;
    height:100%;
 `
-const ModalCloseBtn = styled.div`
+const ModalCloseBtn = styled.img`
    width: 24px;
    height: 24px;
-   text-align:center;
 `
 const ModalTitle = styled.div`
    font-size: 24px;
@@ -61,7 +62,7 @@ export default function Modal({image, title, handleClick}) {
         <ModalBackground onClick={handleClick}>
             <ModalContainer>
                 <ModalImg src={image}/>
-                <ModalCloseBtn onClick={handleClick}/>
+                <ModalCloseBtn src={closeIcon} onClick={handleClick}/>
                 <ModalInfoWrapper>
                     {/* 북마크 아이콘 들어갈 자리 */}
                     <ModalTitle>{title}</ModalTitle>
