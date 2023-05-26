@@ -7,6 +7,9 @@ import { useState } from 'react';
 const BookmarkIcon = styled.img`
    width: 24px;
    height: 24px;
+   position: absolute;
+   right: 12px;
+   bottom: 12px;
 `
 
 

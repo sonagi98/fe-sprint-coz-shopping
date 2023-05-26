@@ -16,6 +16,8 @@ const ImgWrapper = styled.div`
    border-radius: 0%;
    border: 1px solid rgba(0, 0, 0, 0.1);
    overflow: hidden;
+
+   position: relative;
 `
 
 const Image = styled.img`
