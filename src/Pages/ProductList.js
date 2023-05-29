@@ -21,7 +21,7 @@ const MainContainer = styled.div`
 
 `
 
-export default function ProductListPage() {
+export default function ProductListPage({items, bookmarkHandler}) {
 
     return (
         <ScreenContainer>
